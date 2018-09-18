@@ -1,6 +1,6 @@
 
 """
-Columbia's COMS W4111.001 Introduction to Databases
+Developers: Amnah Ahmad and Shelley Zhong 
 Example Webserver
 To run locally:
     python server.py
