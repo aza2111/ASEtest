@@ -1,0 +1,79 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h3>Your can search for department information on this page</h3>
+  <p><a href="/">Main Page</a></p>
+
+  <form method="POST" action="/search">
+  <div>
+  	<p> Select a deparment:
+      <select name = "dname">
+        {% for n in data0 %}
+            <option value = {{n}}> {{n}} </option>
+        {% endfor %}
+      </select>
+    </p>
+    <input type="submit" value="Search">
+  </div>
+  </form>
+
+  <div>
+    <h4>Department Name:</h4>
+    {% for n in data4 %}
+      {{n}}
+    {% endfor %}
+
+    <h4>Department Location:</h4>
+    {% for n in data3 %}
+      {{n.loc}}
+    {% endfor %}
+
+    <h4>Subject:</h4>
+    {% for n in data3 %}
+      {{n.subj}}
+    {% endfor %}
+
+    <h4> Department Head:</h4>
+    {% for n in data3 %}
+      <div>
+        {{n.name}} 
+        {% if n.since != None %}  
+          since {{n.since}}
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <h4>Majors offered:</h4>
+    {% for n in data1 %}
+      <div>{{n}}</div>
+    {% endfor %}
+
+    <h4> Professors in the department:</h4>
+    <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Office Location</th>
+      <th>Office Hour</th>
+    </tr> 
+    {% for n in data2 %}
+    <tr>
+      <th>{{n.name}}</th>
+      <th>{{n.email}}</th> 
+      <th>{{n.loc}}</th>
+      <th>{{n.oh}}</th>
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+
+</body>
+</html>

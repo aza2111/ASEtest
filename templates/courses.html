@@ -1,0 +1,55 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+    input {
+      width: 80px;
+    }
+  </style>
+
+
+<body>
+  <h3>Showing courses for {{major}}
+    <br/>
+    {% for n in credits %}
+      {{n}}
+    {% endfor %}
+   credits required for this major
+   <br/>
+   Current user: {{uni}}
+  </h3>
+
+  <form method="POST" action='/add2'>
+    <table border="1">
+    <tr>
+      <th>Course Number</th>
+      <th>Course Name</th>
+      <th> Taught By</th>
+      <th> Type </th>
+      <th> Credit </th>
+      <th> Taken </th>
+    </tr> 
+    {% for n in data %}
+    <tr>
+      <th>{{n.id}}</th>
+      <th>{{n.name}}</th> 
+      <th>{{n.prof}}</th>
+      <th>{{n.typ}}</th>
+      <th>{{n.cred}}</th>
+      <th>
+          Uni: <input type="text" name="uni">
+          Course Number: <input type="text" name="cid"> 
+          Term (e.g. Fall 2017): <input type="text" name="term">
+      </th>
+    </tr>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Submit"> 
+  </form>
+
+  <p><a href="/">Main Page</a></p>
+  <p><a href="another">Search Page</a></p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+    th, th{
+      padding: 15px;
+      text-align: left;
+    }
+  </style>
+
+
+<body>
+  <h3>Please enter the following information</h3>
+  <h4>Fields with * are required</h4>
+
+  <form method="POST" action="/add">
+  <div>
+    <table>
+      <tr>
+        <th>Name: <input type="text" name="sname"></th>
+        <th>College: <input type="text" name="college"></th>
+        <th>*Uni: <input type="text" name="uni"></th>
+        <th>*Student ID: <input type="text" name="sid"></th>
+      </tr>
+      <tr>
+        <th>
+          *Major: 
+          <select name = "major">
+            {% for n in data %}
+            <option value={{n}}> {{n.split('$')[0].replace('_',' ')}}, {{n.split('$')[1]}} </option>
+            {% endfor %}
+          </select>
+        </th>
+        <th>
+          *Advisor:
+          <select name = "advisor">
+            {% for n in data2 %}
+            <option value={{n}}> {{n.replace('_',' ')}} </option>
+            {% endfor %}
+          </select>
+        </th>
+      </tr>
+      <tr>  
+        <th>*Since: <input type="number" name="since"></th>
+        <th>*Until: <input type="number" name="until"></th>
+      </tr>
+    </table>
+
+    <input type="submit" value="Submit">
+
+  </div>
+  </form>
+
+  <p><a href="another">Go to the search page</a></p>
+
+</body>
+</html>
